@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace SuporteAPI.Data
+namespace SuportAPI.Data
 {
     public enum enStatus : short { New = 0, Open = 1, Pendent = 2, Closed = 3 }
     public enum enType : short { Question = 0, Incident = 1, Problem = 2, Task = 3 }

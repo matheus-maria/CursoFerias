@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace SuporteAPI.API.Ticket
+namespace SuportAPI.API.Ticket
 {
     partial class TicketController
     {

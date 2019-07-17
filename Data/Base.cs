@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace SuporteAPI.Data
+namespace SuportAPI.Data
 {
     public enum enRowStatus : short { Removed = -1, Temporary = 0, Active = 1 }
 
