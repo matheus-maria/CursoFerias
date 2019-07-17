@@ -11,3 +11,4 @@ D:\dev\FTT\CursoFerias\SuportAPI\obj\Debug\netcoreapp2.2\SuportAPI.AssemblyInfo.
 D:\dev\FTT\CursoFerias\SuportAPI\obj\Debug\netcoreapp2.2\SuportAPI.RazorTargetAssemblyInfo.cache
 D:\dev\FTT\CursoFerias\SuportAPI\obj\Debug\netcoreapp2.2\SuportAPI.dll
 D:\dev\FTT\CursoFerias\SuportAPI\obj\Debug\netcoreapp2.2\SuportAPI.pdb
+D:\dev\FTT\CursoFerias\SuportAPI\obj\Debug\netcoreapp2.2\SuportAPI.csprojAssemblyReference.cache
