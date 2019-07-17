@@ -3,14 +3,13 @@ using System;
 
 namespace SuportAPI.Data
 {
-    public partial class BaseContext : DbContext
+    public class BaseContext : DbContext
     {
-        
-    }
+        public BaseContext(DbContextOptions<BaseContext> options) : base(options)
+        {
 
-    public class TicketContext : BaseContext
-    {
+        }
+
         public DbSet<Ticket> Tickets { get; set; }
-        
-    }
+    }    
 }
