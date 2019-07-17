@@ -18,8 +18,7 @@ namespace SuportAPI.Data
 
         #region RowDate
 
-        [Column("BASEROWD"), Required]
-        [DataType(System.ComponentModel.DataAnnotations.DataType.Date)]
+        [Column("BASEROWD"), Required, DataType(DataType.Date)]
         public DateTime RowDate { get; set; }
 
         #endregion

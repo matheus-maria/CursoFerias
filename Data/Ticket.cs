@@ -22,22 +22,22 @@ namespace SuportAPI.Data
         #region ID
         [Column("ID")]
         [DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
-        public long Id { get; set; }
+        public int Id { get; set; }
         #endregion
         
         #region Code
-        [Column("CODIGO", TypeName = "varchar"), StringLength(50)]
-        public long Code { get; set; }
+        [Column("CODIGO", TypeName = "varchar(50)"), StringLength(50)]
+        public string Code { get; set; }
         #endregion
 
         #region Description
-        [Column("DESCRICAO", TypeName = "varchar"), StringLength(100)]
-        public long Description { get; set; }
+        [Column("DESCRICAO", TypeName = "varchar(100)"), StringLength(100)]
+        public string Description { get; set; }
         #endregion
 
         #region Type
-        [Column("TIPO"), Required]
-        public short TypeInner { get; set; }
+        [Column("TIPO")]
+        public short? TypeInner { get; set; }
 
         [NotMapped]
         public enType Type
@@ -48,8 +48,8 @@ namespace SuportAPI.Data
         #endregion
 
         #region Priority
-        [Column("PRIORIDADE"), Required]
-        public short PriorityInner { get; set; }
+        [Column("PRIORIDADE")]
+        public short? PriorityInner { get; set; }
 
         [NotMapped]
         public enPriority Priority
@@ -60,23 +60,17 @@ namespace SuportAPI.Data
         #endregion
 
         #region OpeningDate
-
-        [Column("DATA_ABERTURA"), Required]
-        [DataType(System.ComponentModel.DataAnnotations.DataType.Date)]
+        [Column("DATA_ABERTURA"), DataType(DataType.Date)]
         public DateTime OpeningDate { get; set; }
-
         #endregion
 
         #region ClosingDate
-
-        [Column("DATA_FECHAMENTO"), Required]
-        [DataType(System.ComponentModel.DataAnnotations.DataType.Date)]
-        public DateTime ClosingDate { get; set; }
-
+        [Column("DATA_FECHAMENTO"), DataType(DataType.Date)]
+        public DateTime? ClosingDate { get; set; }
         #endregion
 
         #region Status
-        [Column("STATUS"), Required]
+        [Column("STATUS")]
         public short StatusInner { get; set; }
 
         [NotMapped]
