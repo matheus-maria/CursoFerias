@@ -21,31 +21,31 @@ namespace SuportAPI.Data
         #region ID
         [Column("ID")]
         [DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
-        public long Id { get; set; }
+        public int Id { get; set; }
         #endregion
 
         #region Name
-        [Column("NOME", TypeName = "varchar"), StringLength(50)]
-        public long Name { get; set; }
+        [Column("NOME", TypeName = "varchar(50)"), StringLength(50)]
+        public string Name { get; set; }
         #endregion
 
         #region Company
-        [Column("EMPRESA", TypeName = "varchar"), StringLength(100)]
-        public long Company { get; set; }
+        [Column("EMPRESA", TypeName = "varchar(100)"), StringLength(100)]
+        public string Company { get; set; }
         #endregion
 
         #region Login
-        [Column("USUARIO", TypeName = "varchar"), StringLength(50)]
-        public long Login { get; set; }
+        [Column("USUARIO", TypeName = "varchar(50)"), StringLength(50)]
+        public string Login { get; set; }
         #endregion
 
         #region Password
-        [Column("SENHA", TypeName = "varchar"), StringLength(50)]
-        public long Password { get; set; }
+        [Column("SENHA", TypeName = "varchar(50)"), StringLength(50)]
+        public string Password { get; set; }
         #endregion
 
         #region Type
-        [Column("TIPO"), Required]
+        [Column("TIPO")]
         public short TypeInner { get; set; }
 
         [NotMapped]

@@ -18,20 +18,17 @@ namespace SuportAPI.Data
         #region ID
         [Column("ID")]
         [DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
-        public long Id { get; set; }
+        public int Id { get; set; }
         #endregion
 
         #region TicketUserId
         [Column("TICKET_USUARIO_ID")]
-        public long TicketUserId { get; set; }
-
-        [ForeignKey("ID")]
-        public TicketUser fkTicketUserId { get; set; }
+        public int TicketUserId { get; set; }        
         #endregion
 
         #region Comment
-        [Column("COMENTARIO", TypeName = "varchar"), StringLength(4000)]
-        public long Comment { get; set; }
+        [Column("COMENTARIO", TypeName = "varchar(4000)"), StringLength(4000)]
+        public string Comment { get; set; }
         #endregion
 
     }

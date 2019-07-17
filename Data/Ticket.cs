@@ -5,8 +5,8 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace SuportAPI.Data
 {
     public enum enStatus : short { New = 0, Open = 1, Pendent = 2, Closed = 3 }
-    public enum enType : short { Question = 0, Incident = 1, Problem = 2, Task = 3 }
-    public enum enPriority : short { Low = 0, Normal = 1, High = 2, Urgent = 3 }
+    public enum enType : short { Without = -1, Question = 0, Incident = 1, Problem = 2, Task = 3 }
+    public enum enPriority : short { Without = -1, Low = 0, Normal = 1, High = 2, Urgent = 3 }
 
     [Table("TICKET")]
     public class Ticket : Base
@@ -16,6 +16,8 @@ namespace SuportAPI.Data
         {
             this.Id = -1;
             this.Status = enStatus.New;
+            this.Type = enType.Without;
+            this.Priority = enPriority.Without;
         }
         #endregion
 
@@ -37,7 +39,7 @@ namespace SuportAPI.Data
 
         #region Type
         [Column("TIPO")]
-        public short? TypeInner { get; set; }
+        public short TypeInner { get; set; }
 
         [NotMapped]
         public enType Type
@@ -49,7 +51,7 @@ namespace SuportAPI.Data
 
         #region Priority
         [Column("PRIORIDADE")]
-        public short? PriorityInner { get; set; }
+        public short PriorityInner { get; set; }
 
         [NotMapped]
         public enPriority Priority
