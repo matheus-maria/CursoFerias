@@ -35,12 +35,12 @@ namespace SuportAPI.Data
         #endregion
 
         #region Login
-        [Column("USUARIO", TypeName = "varchar"), StringLength(100)]
+        [Column("USUARIO", TypeName = "varchar"), StringLength(50)]
         public long Login { get; set; }
         #endregion
 
         #region Password
-        [Column("SENHA", TypeName = "varchar"), StringLength(100)]
+        [Column("SENHA", TypeName = "varchar"), StringLength(50)]
         public long Password { get; set; }
         #endregion
 

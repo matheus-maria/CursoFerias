@@ -5,11 +5,11 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace SuportAPI.Data
 {
-    [Table("COMENTARIO")]
-    public class Comments : Base
+    [Table("TICKET_USUARIO")]
+    public class TicketUser : Base
     {
         #region New
-        public Comments()
+        public TicketUser()
         {
             this.Id = -1;
         }
@@ -21,18 +21,20 @@ namespace SuportAPI.Data
         public long Id { get; set; }
         #endregion
 
-        #region TicketUserId
-        [Column("TICKET_USUARIO_ID")]
-        public long TicketUserId { get; set; }
+        #region TicketId
+        [Column("TICKET_ID")]
+        public long TicketId { get; set; }
 
         [ForeignKey("ID")]
-        public TicketUser fkTicketUserId { get; set; }
+        public Ticket fkTicketId { get; set; }
         #endregion
 
-        #region Comment
-        [Column("COMENTARIO", TypeName = "varchar"), StringLength(4000)]
-        public long Comment { get; set; }
-        #endregion
+        #region UserId
+        [Column("USUARIO_ID")]
+        public long UserId { get; set; }
 
+        [ForeignKey("ID")]
+        public User fkUserId { get; set; }
+        #endregion
     }
 }

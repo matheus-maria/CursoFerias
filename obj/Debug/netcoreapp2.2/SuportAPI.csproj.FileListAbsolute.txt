@@ -3,7 +3,6 @@ D:\dev\FTT\CursoFerias\SuportAPI\bin\Debug\netcoreapp2.2\SuportAPI.runtimeconfig
 D:\dev\FTT\CursoFerias\SuportAPI\bin\Debug\netcoreapp2.2\SuportAPI.runtimeconfig.dev.json
 D:\dev\FTT\CursoFerias\SuportAPI\bin\Debug\netcoreapp2.2\SuportAPI.dll
 D:\dev\FTT\CursoFerias\SuportAPI\bin\Debug\netcoreapp2.2\SuportAPI.pdb
-D:\dev\FTT\CursoFerias\SuportAPI\obj\Debug\netcoreapp2.2\SuportAPI.csprojAssemblyReference.cache
 D:\dev\FTT\CursoFerias\SuportAPI\obj\Debug\netcoreapp2.2\SuportAPI.csproj.CoreCompileInputs.cache
 D:\dev\FTT\CursoFerias\SuportAPI\obj\Debug\netcoreapp2.2\SuportAPI.RazorAssemblyInfo.cache
 D:\dev\FTT\CursoFerias\SuportAPI\obj\Debug\netcoreapp2.2\SuportAPI.RazorAssemblyInfo.cs
