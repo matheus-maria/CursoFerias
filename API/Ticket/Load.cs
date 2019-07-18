@@ -4,26 +4,63 @@ using Microsoft.AspNetCore.Mvc;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
+using SuportAPI.Data;
+using SuportAPI.API.User;
 
 namespace SuportAPI.API.Ticket
 {
     partial class TicketController
     {
         [HttpGet("getTickets")]
-        public async Task<ActionResult<List<Data.Ticket>>> GetTickets()
+        public async Task<ActionResult<List<VMs.Ticket>>> GetTickets()
         {
             try
             {
                 // QUERY
                 var ticketList = await context.Tickets
                     .Where(x => x.RowStatus == Data.enRowStatus.Active)
-                    .ToListAsync();                               
+                    .ToListAsync();
+
+                // MODELING
+                List<Data.Ticket> dataTicktes = ticketList.ToList();
+                List<VMs.Ticket> result = new List<VMs.Ticket>();
+                foreach(Data.Ticket item in dataTicktes)
+                {
+                    result.Add(await ConvertVMTicket(item));
+                }
 
                 // RESULT
-                List<Data.Ticket> result = ticketList.ToList();           
                 return OkResponse(result);
             }
             catch(Exception ex) { return BadRequestResponse(ex); }
+        }        
+
+        private async Task<VMs.Ticket> ConvertVMTicket(Data.Ticket ticket)
+        {
+            VMs.Ticket result = new VMs.Ticket();
+
+            try
+            {
+                result.Id = ticket.Id;
+                result.Code = ticket.Code;
+                result.Description = ticket.Description;
+                result.OpeningDate = ticket.OpeningDate;
+                result.ClosingDate = ticket.ClosingDate;
+                result.Priority = ticket.Priority.ToString();
+                result.Status = ticket.Status.ToString();
+                result.Type = ticket.Type.ToString();
+
+                using (var user = new UserController(context))
+                {
+                    result.Owner = await user.GetOwner(ticket.UserId);
+                }
+
+                return result;
+            }
+            catch(Exception ex) { throw ex; }
+            
         }
+
+
     }
 }

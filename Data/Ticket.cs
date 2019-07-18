@@ -61,6 +61,11 @@ namespace SuportAPI.Data
         }
         #endregion
 
+        #region UserId
+        [Column("USUARIO_ID")]
+        public int UserId { get; set; }
+        #endregion
+
         #region OpeningDate
         [Column("DATA_ABERTURA"), DataType(DataType.Date)]
         public DateTime OpeningDate { get; set; }
