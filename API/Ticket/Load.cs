@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using SuportAPI.Data;
 using SuportAPI.API.User;
+using SuportAPI.API.Comment;
 
 namespace SuportAPI.API.Ticket
 {
@@ -55,7 +56,12 @@ namespace SuportAPI.API.Ticket
                     result.Owner = await user.GetUserData(ticket.UserId);
                 }
 
-                return result;
+                using (var comment = new CommentController(context))
+                {
+                    result.Comments = await comment.GetCommentData(ticket.Id);
+                }
+
+                    return result;
             }
             catch(Exception ex) { throw ex; }
             
