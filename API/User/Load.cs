@@ -14,14 +14,9 @@ namespace SuportAPI.API.User
         public async Task<ActionResult<VMs.User>> GetUser(int id)
         {
             try
-            {
-                // QUERY
-                var dataUser = await context.Users
-                    .Where(x => x.RowStatus == Data.enRowStatus.Active && x.Id == id)
-                    .FirstOrDefaultAsync();
-
-                // MODELING
-                var result = ConvertVMUser(dataUser);                
+            {               
+                // GET DATA
+                var result = await GetUserData(id);                
 
                 // RESULT
                 return OkResponse(result);
@@ -29,7 +24,7 @@ namespace SuportAPI.API.User
             catch(Exception ex) { return BadRequestResponse(ex); }
         }
 
-        public async Task<VMs.User> GetOwner(int id)
+        public async Task<VMs.User> GetUserData(int id)
         {
             // QUERY
             var dataUser = await context.Users

@@ -52,7 +52,7 @@ namespace SuportAPI.API.Ticket
 
                 using (var user = new UserController(context))
                 {
-                    result.Owner = await user.GetOwner(ticket.UserId);
+                    result.Owner = await user.GetUserData(ticket.UserId);
                 }
 
                 return result;
