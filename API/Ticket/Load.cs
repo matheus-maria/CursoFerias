@@ -34,7 +34,26 @@ namespace SuportAPI.API.Ticket
                 return OkResponse(result);
             }
             catch(Exception ex) { return BadRequestResponse(ex); }
-        }        
+        }
+
+        [HttpGet("getTicket")]
+        public async Task<ActionResult<VMs.Ticket>> GetTickets(int ticketId)
+        {
+            try
+            {
+                // QUERY
+                var ticket = await context.Tickets
+                    .Where(x => x.RowStatus == Data.enRowStatus.Active && x.Id == ticketId)
+                    .FirstOrDefaultAsync();
+
+                // MODELING                
+                var result = await ConvertVMTicket(ticket);                
+
+                // RESULT
+                return OkResponse(result);
+            }
+            catch (Exception ex) { return BadRequestResponse(ex); }
+        }
 
         private async Task<VMs.Ticket> ConvertVMTicket(Data.Ticket ticket)
         {
