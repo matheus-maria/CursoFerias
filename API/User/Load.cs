@@ -26,15 +26,20 @@ namespace SuportAPI.API.User
 
         public async Task<VMs.User> GetUserData(int id)
         {
-            // QUERY
-            var dataUser = await context.Users
-                .Where(x => x.RowStatus == Data.enRowStatus.Active && x.Id == id)
-                .FirstOrDefaultAsync();
+            try
+            {
+                // QUERY
+                var dataUser = await context.Users
+                    .Where(x => x.RowStatus == Data.enRowStatus.Active && x.Id == id)
+                    .FirstOrDefaultAsync();
 
-            // MODELING
-            var result = ConvertVMUser(dataUser);
+                // MODELING
+                var result = ConvertVMUser(dataUser);
 
-            return result;
+                return result;
+            }
+            catch (Exception ex) { throw ex; }
+            finally { context.Dispose(); }            
         }
 
         private VMs.User ConvertVMUser(Data.User user)

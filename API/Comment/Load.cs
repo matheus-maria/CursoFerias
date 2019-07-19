@@ -26,25 +26,29 @@ namespace SuportAPI.API.Comment
 
         public async Task<List<VMs.Comment>> GetCommentData(int ticketId)
         {
-            // QUERY
-            List<int> dataIDComment = await context.TicketUser
+            try
+            {
+                // QUERY
+                List<int> dataIDComment = await context.TicketUser
                 .Where(x => x.RowStatus == Data.enRowStatus.Active && x.TicketId == ticketId)
                 .Select(x => x.Id)
                 .ToListAsync();
 
-            List<Data.Comments> comments = await context.Comments
-                .Where(x => x.RowStatus == Data.enRowStatus.Active && dataIDComment.Contains(x.TicketUserId))
-                .ToListAsync();
+                List<Data.Comments> comments = await context.Comments
+                    .Where(x => x.RowStatus == Data.enRowStatus.Active && dataIDComment.Contains(x.TicketUserId))
+                    .ToListAsync();
 
-            List<VMs.Comment> vmComments = new List<VMs.Comment>();
+                List<VMs.Comment> vmComments = new List<VMs.Comment>();
 
-            foreach(var comment in comments)
-            {
-                vmComments.Add(await ConvertVMComment(comment));
+                foreach (var comment in comments)
+                {
+                    vmComments.Add(await ConvertVMComment(comment));
+                }
+
+                return vmComments;
             }
-
-            return vmComments;
-            
+            catch (Exception ex) { throw ex; }
+            finally { context.Dispose(); }
         }
 
         private async Task<VMs.Comment> ConvertVMComment(Data.Comments comment)
@@ -69,7 +73,7 @@ namespace SuportAPI.API.Comment
                 return result;
             }
             catch (Exception ex) { throw ex; }
-
+            finally { context.Dispose(); }
         }
 
     }

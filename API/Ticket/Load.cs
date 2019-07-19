@@ -34,6 +34,7 @@ namespace SuportAPI.API.Ticket
                 return OkResponse(result);
             }
             catch(Exception ex) { return BadRequestResponse(ex); }
+            finally { context.Dispose(); }
         }
 
         [HttpGet("getTicket")]
@@ -53,6 +54,7 @@ namespace SuportAPI.API.Ticket
                 return OkResponse(result);
             }
             catch (Exception ex) { return BadRequestResponse(ex); }
+            finally { context.Dispose(); }
         }
 
         private async Task<VMs.Ticket> ConvertVMTicket(Data.Ticket ticket)

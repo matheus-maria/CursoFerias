@@ -11,17 +11,22 @@ namespace SuportAPI.API.User
     partial class UserController
     {
         [HttpGet("validate")]
-        public async Task<ActionResult<bool>> ValidadeUser(string login, string password)
+        public async Task<ActionResult<VMs.User>> ValidadeUser(string login, string password)
         {
             try
             {
                 // VERIFY
-                var isUser = await context.Users
+                var userID = await context.Users
                     .Where(x => x.Login == login && x.Password == password)
-                    .AnyAsync();                
+                    .Select( x => x.Id)
+                    .FirstOrDefaultAsync();
 
                 // RESULT
-                return OkResponse(isUser);
+                if (userID > 0)
+                    return OkResponse(await GetUserData(userID));
+                else
+                    throw new Exception("Usuario não cadastrado");                
+
             }
             catch(Exception ex) { return BadRequestResponse(ex); }
         }      
