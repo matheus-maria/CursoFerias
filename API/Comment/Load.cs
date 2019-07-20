@@ -11,12 +11,12 @@ namespace SuportAPI.API.Comment
 {
     partial class CommentController
     {
-        [HttpGet("getComments")]
-        public async Task<ActionResult<List<VMs.Comment>>> GetComments(int ticketId)
+        [HttpGet("getComments/{id}")]
+        public async Task<ActionResult<List<VMs.Comment>>> GetComments(int id)
         {
             try
             {
-                var result = await GetCommentData(ticketId);
+                var result = await GetCommentData(id);
 
                 // RESULT
                 return OkResponse(result);

@@ -10,7 +10,7 @@ namespace SuportAPI.API.User
 {
     partial class UserController
     {
-        [HttpGet("getUser")]
+        [HttpGet("getUser/{id}")]
         public async Task<ActionResult<VMs.User>> GetUser(int id)
         {
             try

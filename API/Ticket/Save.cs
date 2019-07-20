@@ -26,7 +26,7 @@ namespace SuportAPI.API.Ticket
 
                     var dataTicket = new Data.Ticket
                     {                        
-                        Id = ticketId,
+                        Id = ++ticketId,
                         Code = ticket.Code,
                         Description = ticket.Description,
                         UserId = ticket.Owner.Id,

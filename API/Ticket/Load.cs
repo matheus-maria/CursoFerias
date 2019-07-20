@@ -37,14 +37,14 @@ namespace SuportAPI.API.Ticket
             finally { context.Dispose(); }
         }
 
-        [HttpGet("getTicket")]
-        public async Task<ActionResult<VMs.Ticket>> GetTickets(int ticketId)
+        [HttpGet("getTicket/{id}")]
+        public async Task<ActionResult<VMs.Ticket>> GetTickets(int id)
         {
             try
             {
                 // QUERY
                 var ticket = await context.Tickets
-                    .Where(x => x.RowStatus == Data.enRowStatus.Active && x.Id == ticketId)
+                    .Where(x => x.RowStatus == Data.enRowStatus.Active && x.Id == id)
                     .FirstOrDefaultAsync();
 
                 // MODELING                
@@ -87,7 +87,6 @@ namespace SuportAPI.API.Ticket
             catch(Exception ex) { throw ex; }
             
         }
-
 
     }
 }

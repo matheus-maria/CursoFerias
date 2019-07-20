@@ -10,7 +10,7 @@ namespace SuportAPI.API.User
 {
     partial class UserController
     {
-        [HttpGet("validate")]
+        [HttpGet("validate/{login}/{password}")]
         public async Task<ActionResult<VMs.User>> ValidadeUser(string login, string password)
         {
             try
